@@ -73,41 +73,27 @@ namespace AsymptoticMonoGameFramework {
             }
         }
 
-        public static void ResetToDefault(int playerNumber) {
-            if(playerNumber == keyboardControllerIndex) {
-                ResetKeyboardToDefault();
-            } else {
-                ResetGamepadToDefault(playerNumber);
-            }
-        }
-
-        private static void ResetGamepadToDefault(int playerNumber) {
-            int controlsIndex = 0;
-            foreach (KeyValuePair<string, object> entry in DefaultControls.gamepadControls) {
-                for (int i = 0; i < numGamepads; i++) {
-                    gamepadControls[entry.Key][i] = (int)DefaultControls.gamepadControls[entry.Key];
-                }
-                controlsIndex++;
-            }
-        }
-
-        private static void ResetKeyboardToDefault() {
-            int controlsIndex = 0;
-            foreach (KeyValuePair<string, object> entry in DefaultControls.keyboardControls) {
-                keyboardControls[entry.Key][0] = (int)DefaultControls.keyboardControls[entry.Key];
-                controlsIndex++;
-            }
-        }
-
         public static void ApplyControlsToAllGamepads(int playerNumber) {
-            int controlsIndex = 0;
             foreach (KeyValuePair<string, object> entry in DefaultControls.gamepadControls) {
                 for (int playerIndex = 0; playerIndex < numGamepads; playerIndex++) {
                     if (playerIndex != playerNumber) {
                         gamepadControls[entry.Key][playerIndex] = gamepadControls[entry.Key][playerNumber];
                     }
                 }
-                controlsIndex++;
+            }
+        }
+
+        public static void ApplyPresetToGamepad(int playerNumber, string presetKey) {
+            Dictionary<string, object> presetControls = DefaultControls.gamepadPresets[presetKey];
+            foreach (KeyValuePair<string, object> entry in presetControls) {
+                gamepadControls[entry.Key][playerNumber] = (int)presetControls[entry.Key];
+            }
+        }
+
+        public static void ApplyPresetToKeyboard(string presetKey) {
+            Dictionary<string, object> presetControls = DefaultControls.keyboardPresets[presetKey];
+            foreach (KeyValuePair<string, object> entry in presetControls) {
+                keyboardControls[entry.Key][0] = (int)presetControls[entry.Key];
             }
         }
 
@@ -118,6 +104,8 @@ namespace AsymptoticMonoGameFramework {
         }
 
         private static void SetupInitialControls() {
+            DefaultControls.SetupPresets();
+
             int controlsIndex = 0;
             foreach (KeyValuePair<string, object> entry in DefaultControls.gamepadControls) {
                 int[] playerControlsTValues = new int[numGamepads];

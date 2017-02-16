@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -7,9 +8,9 @@ using Microsoft.Xna.Framework.Input;
 namespace AsymptoticMonoGameFramework {
 
     public class KeyboardControlsMenu : ScrollingMenuScreen {
-        
+
+        private MenuButtonSideScroll choosePresetButton;
         private MenuButton backButton;
-        private MenuButton resetToDefaultButton;
 
         private bool waitingForAllKeysToBeUnpressed = false; //must unpress all keys after clicking a button so the control isn't immediately assigned to that button
         private bool waitingForKeyPress = false;
@@ -31,6 +32,7 @@ namespace AsymptoticMonoGameFramework {
         public override void MenuScreenOpened() {
             base.MenuScreenOpened();
             UpdateAllButtonImages();
+            UpdateButtonsEnabled();
         }
 
         public override void LoadContent() {
@@ -49,14 +51,17 @@ namespace AsymptoticMonoGameFramework {
                     ));
             }
 
-            resetToDefaultButton = new MenuButton(
+            if (DefaultControls.keyboardPresets.Count > 1) {
+                choosePresetButton = new MenuButtonSideScroll(
                     new Vector2(),
                     this,
                     buttonSize,
-                    "Reset to Default",
+                    DefaultControls.keyboardPresets.Keys.ToArray(),
+                    0,
                     candara22Font
                 );
-            AddButton(resetToDefaultButton);
+                AddButton(choosePresetButton);
+            }
 
             backButton = new MenuButton(
                     new Vector2(),
@@ -93,12 +98,24 @@ namespace AsymptoticMonoGameFramework {
             }
         }
 
+        public override void ButtonSideScrollScrolled(MenuButtonSideScroll button, int direction) {
+            base.ButtonSideScrollScrolled(button, direction);
+            if (button == choosePresetButton) {
+                ControlsConfig.ApplyPresetToKeyboard(button.GetSelectedValue());
+                UpdateAllButtonImages();
+
+                if (button.GetSelectedValue() == DefaultControls.customPresetString) {
+                    SetAllButtonsEnabled(true);
+                } else {
+                    SetAllButtonsEnabled(false);
+                }
+            }
+        }
+
         public override void ButtonClicked(MenuButton button) {
             base.ButtonClicked(button);
             if (button == backButton) {
                 BackButtonPressed();
-            } else if (button == resetToDefaultButton) {
-                ResetToDefaultButtonPressed();
             } else {
                 KeyboardControlsMenuButton controlsButton = (KeyboardControlsMenuButton)button;
                 if (controlsButton.buttonType == KeyboardControlsMenuButtonType.Button) {
@@ -136,9 +153,20 @@ namespace AsymptoticMonoGameFramework {
             BackPressed();
         }
 
-        private void ResetToDefaultButtonPressed() {
-            ControlsConfig.ResetToDefault(ControlsConfig.keyboardControllerIndex);
-            UpdateAllButtonImages();
+        private void UpdateButtonsEnabled() {
+            if (choosePresetButton.GetSelectedValue() == DefaultControls.customPresetString) {
+                SetAllButtonsEnabled(true);
+            } else {
+                SetAllButtonsEnabled(false);
+            }
+        }
+
+        private void SetAllButtonsEnabled(bool value) {
+            foreach (MenuSelection button in buttonList) {
+                if (button is KeyboardControlsMenuButton) {
+                    button.enabled = value;
+                }
+            }
         }
 
         public void UpdateAllButtonImages() {

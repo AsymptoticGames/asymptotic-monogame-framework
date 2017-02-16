@@ -24,12 +24,10 @@ namespace AsymptoticMonoGameFramework{
 
         public ScrollingMenuScreen() : base() {
             Setup();
-            cycleOptions = false;
         }
 
         public ScrollingMenuScreen(MenuScreen _parentMenu) : base(_parentMenu) {
             Setup();
-            cycleOptions = false;
         }
 
         private void Setup() {
@@ -38,6 +36,7 @@ namespace AsymptoticMonoGameFramework{
             menuPadding = 60;
             buttonSize = MenuButton.buttonSize;
             buttonPadding = 10;
+            cycleOptions = false;
         }
 
         public override void LoadContent() {
@@ -59,13 +58,13 @@ namespace AsymptoticMonoGameFramework{
             base.Update(gameTime);
             if ((PlayerControls.MouseLeftPressed() && DownArrowBoundingRect().Contains(PlayerControls.MousePosition()))) {
                 currentlySelectedButtonIndex++;
-                if(currentlySelectedButtonIndex > buttonList.Count - 1) {
+                if (currentlySelectedButtonIndex > buttonList.Count - 1) {
                     currentlySelectedButtonIndex = buttonList.Count - 1;
                 }
             }
             if ((PlayerControls.MouseLeftPressed() && UpArrowBoundingRect().Contains(PlayerControls.MousePosition()))) {
                 currentlySelectedButtonIndex--;
-                if(currentlySelectedButtonIndex < 0) {
+                if (currentlySelectedButtonIndex < 0) {
                     currentlySelectedButtonIndex = 0;
                 }
             }

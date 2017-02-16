@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework;
@@ -10,8 +11,8 @@ namespace AsymptoticMonoGameFramework{
 
         private int playerNumber;
 
+        private MenuButtonSideScroll choosePresetButton;
         private MenuButton applyToAllGamepadsButton;
-        private MenuButton resetToDefaultButton;
         private MenuButton backButton;
 
         private bool waitingForAllKeysToBeUnpressed = false; //must unpress all keys after clicking a button so the control isn't immediately assigned to that button
@@ -36,13 +37,14 @@ namespace AsymptoticMonoGameFramework{
         public override void MenuScreenOpened() {
             base.MenuScreenOpened();
             UpdateAllButtonImages();
+            UpdateButtonsEnabled();
         }
 
         public override void LoadContent() {
             base.LoadContent();
 
             SpriteFont candara22Font = Globals.content.Load<SpriteFont>("Fonts/candara-bold-22");
-            
+
             foreach (KeyValuePair<string, object> entry in DefaultControls.gamepadControls) {
                 AddButton(new GamepadControlsMenuButton(
                         new Vector2(),
@@ -62,15 +64,18 @@ namespace AsymptoticMonoGameFramework{
                     candara22Font
                 );
             AddButton(applyToAllGamepadsButton);
-
-            resetToDefaultButton = new MenuButton(
+            
+            if (DefaultControls.gamepadPresets.Count > 1) {
+                choosePresetButton = new MenuButtonSideScroll(
                     new Vector2(),
                     this,
                     buttonSize,
-                    "Reset to Default",
+                    DefaultControls.gamepadPresets.Keys.ToArray(),
+                    0,
                     candara22Font
                 );
-            AddButton(resetToDefaultButton);
+                AddButton(choosePresetButton);
+            }
 
             backButton = new MenuButton(
                     new Vector2(),
@@ -114,12 +119,19 @@ namespace AsymptoticMonoGameFramework{
             }
         }
 
+        public override void ButtonSideScrollScrolled(MenuButtonSideScroll button, int direction) {
+            base.ButtonSideScrollScrolled(button, direction);
+            if (button == choosePresetButton) {
+                ControlsConfig.ApplyPresetToGamepad(playerNumber, button.GetSelectedValue());
+                UpdateAllButtonImages();
+                UpdateButtonsEnabled();
+            }
+        }
+
         public override void ButtonClicked(MenuButton button) {
             base.ButtonClicked(button);
             if (button == backButton) {
                 BackButtonPressed();
-            } else if (button == resetToDefaultButton) {
-                ResetToDefaultButtonPressed();
             } else if (button == applyToAllGamepadsButton) {
                 ApplyToAllGamepadsPressed();
             } else {
@@ -174,14 +186,25 @@ namespace AsymptoticMonoGameFramework{
             BackPressed();
         }
 
-        private void ResetToDefaultButtonPressed() {
-            ControlsConfig.ResetToDefault(playerNumber);
-            UpdateAllButtonImages();
-        }
-
         private void ApplyToAllGamepadsPressed() {
             ControlsConfig.ApplyControlsToAllGamepads(playerNumber);
             ((ControlsMenu)parentMenu).UpdateAllControlsButtonImages();
+        }
+
+        private void UpdateButtonsEnabled() {
+            if (choosePresetButton.GetSelectedValue() == DefaultControls.customPresetString) {
+                SetAllButtonsEnabled(true);
+            } else {
+                SetAllButtonsEnabled(false);
+            }
+        }
+
+        private void SetAllButtonsEnabled(bool value) {
+            foreach(MenuSelection button in buttonList) {
+                if (button is GamepadControlsMenuButton) {
+                    button.enabled = value;
+                }
+            }
         }
 
         public void UpdateAllButtonImages() {

@@ -35,6 +35,10 @@ namespace AsymptoticMonoGameFramework
             return new Rectangle((int)position.X + (int)buttonSize.X - 16 - 32, (int)position.Y + 24, 32, 32);
         }
 
+        public string GetSelectedValue() {
+            return selectionOptions[selectionIndex];
+        }
+
         public void LeftArrowPressed() {
             selectionIndex--;
             SetTextLabelToSelectionIndex();

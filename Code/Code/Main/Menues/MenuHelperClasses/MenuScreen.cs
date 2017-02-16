@@ -162,7 +162,7 @@ namespace AsymptoticMonoGameFramework{
             //Do nothing
         }
 
-        public virtual void ButtonSideScrollScrolled(MenuButtonSideScroll button, int value) {
+        public virtual void ButtonSideScrollScrolled(MenuButtonSideScroll button, int direction) {
             //Do nothing
         }
 
