@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>7a9b8a55-8fc9-45c2-afdc-f1446f172330</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Code</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Content\Content.mgcb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Animation\AnimatedEntity.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Animation\Animation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Animation\KeyFrame.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\AudioConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\ControlsConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\DefaultControls.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\GlobalControls.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\PlayerControls.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\Resolution.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\ResolutionConfig.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\Settings.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Config\SettingsManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\CustomColors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Game1.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Gameplay\GameFlow.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Gameplay\GameplayManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Gameplay\GameplaySettingsManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Gameplay\SongManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Gameplay\SoundEffectsManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Globals.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\GlobalTextures.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\HelperFunctions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\GameplayMenues\AudioSettingsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\GameplayMenues\ControlsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\GameplayMenues\GamepadControlsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\GameplayMenues\GameUI.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\GameplayMenues\GraphicalSettingsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\GameplayMenues\KeyboardControlsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\GameplayMenues\PauseMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\GameplayMenues\ResolutionSelectionMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\GamepadControlsMenuButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\KeyboardControlsMenuButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\MenuButton.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\MenuButtonSideScroll.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\MenuButtonWithImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\MenuImage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\MenuLabel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\MenuScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\MenuSelection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\MenuSlider.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\MenuHelperClasses\ScrollingMenuScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\StartMenues\GameplaySettingsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\StartMenues\LoadingScreenManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\StartMenues\MainMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\StartMenues\MainMenuSettingsMenu.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\StartMenues\SplashScreen.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\StartMenues\StartMenuesManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Content\Sprites\" />
+  </ItemGroup>
+</Project>
