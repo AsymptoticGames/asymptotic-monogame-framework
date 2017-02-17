@@ -102,6 +102,7 @@ Easy to animate sprites when using sprite sheets.
  - Preset Controls
  - Mac Support
  - Linux Support
+ - Improving the look and layout of *everything*
  
 Mac and Linux support might be very close to working right now. I just have no way of testing them at the moment.
 
