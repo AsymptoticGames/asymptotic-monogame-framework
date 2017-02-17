@@ -51,6 +51,8 @@ Another thing to note: The first time a user boots it up, it will open in window
  - Sound Effect Volume
  
 Any music or sound effects you play are just multiplied by their respective values.
+
+*Current music is by [Maximalism](http://maximalismmusic.com/)
  
 ######Controls
 
