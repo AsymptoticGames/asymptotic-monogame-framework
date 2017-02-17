@@ -15,6 +15,8 @@ This is under [CC by 3.0 license](https://creativecommons.org/licenses/by/3.0/).
 
 ##What it does
 
+![Framework Example](http://asymptoticgames.com/images/framework-example.gif)
+
 ###Splash Screen
 
 Shows company logo screen on game boot up. Can easily be set to any image.
@@ -28,6 +30,8 @@ Shows company logo screen on game boot up. Can easily be set to any image.
 Opens the Game Settings Menu, where you can select a difficulty for the game.  I just used difficulty as an example.  It's easy to put anything in this screen and have the buttons on this screen affect the variables you will use for gameplay.
   
 #####Settings
+
+![Settings Example](http://asymptoticgames.com/images/settings-example.gif)
 
 ######Graphical Settings
 
