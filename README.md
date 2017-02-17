@@ -6,6 +6,8 @@ This framework is built upon MonoGame 3.5 and is currently supported on Windows.
 
 This is under [CC by 3.0 license](https://creativecommons.org/licenses/by/3.0/). You can use and modify any of this code, even commercially, under the condition that you give Asymptotic Games appropriate credit.
 
+If you do use this framework, I'd love to see what you create with it. Just let me know and I'll feature it on my site and in this readme.
+
 ##Installation Instructions
 
  1. Download and install Visual Studio 2015 Community Edition from Microsoft Website [here](https://www.microsoft.com/en-us/download/details.aspx?id=48146) ([Direct Download Link](https://www.microsoft.com/en-us/download/confirmation.aspx?id=48146))
