@@ -123,3 +123,20 @@ If you have any questions on how to do anything with the framework, or anything 
 Website: [www.asymptoticgames.com](http://www.asymptoticgames.com)
 
 Email: [support@asymptoticgames.com](support@asymptoticgames.com)
+
+##Tips For Using it
+
+###Drawing things to the screen
+
+Everything in the game "pretends" it's running at 1920x1080 (This can be changed in ResolutionConfig.cs if you want by changing the virtual resolution).  Then, when the objects are drawn to the screen, everything is scaled to the resolution of the window.  So when you are programming, the top left of the window will always be (0,0) and the bottom right of the window will always be (1920, 1080), even if the window resolution is only 1280x720.
+
+For example, if you call 
+```
+spriteBatch.Draw(background, new Rectangle(0, 0, 1920, 1080), Color.White);
+```            
+This code will draw the background to fill the entire gameplay window, no matter what the resolution of the window.
+
+Another way to call this code would be to use the virtual resolution variable if you don't want things hard-coded for the future. Like so:
+```
+spriteBatch.Draw(background, new Rectangle(0, 0, ResolutionConfig.virtualResolution.Item1, ResolutionConfig.virtualResolution.Item2), Color.White);
+```
