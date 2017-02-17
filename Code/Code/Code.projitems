@@ -60,7 +60,4 @@
     <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\StartMenues\SplashScreen.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Main\Menues\StartMenues\StartMenuesManager.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Content\Sprites\" />
-  </ItemGroup>
 </Project>

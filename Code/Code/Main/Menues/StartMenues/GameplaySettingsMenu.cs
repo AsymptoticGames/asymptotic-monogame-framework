@@ -22,7 +22,7 @@ namespace AsymptoticMonoGameFramework {
             background = Globals.content.Load<Texture2D>("Menues/MainMenu/GameSettingsMenu/game-settings-menu-background");
 
             gameDifficultyTextLabel = new MenuLabel(
-                         Globals.content.Load<SpriteFont>("Fonts/candara-bold-40"),
+                         Globals.content.Load<SpriteFont>("Fonts/arial-bold-40"),
                          new Vector2(1920 / 2, 240),
                          "Game Difficulty",
                          Color.Black
@@ -43,7 +43,7 @@ namespace AsymptoticMonoGameFramework {
                          this,
                          MenuButton.buttonSize + new Vector2(30, 10),
                          "Begin Game",
-                         Globals.content.Load<SpriteFont>("Fonts/candara-bold-40")
+                         Globals.content.Load<SpriteFont>("Fonts/arial-bold-40")
                     );
             buttonList.Add(beginGameButton);
         }

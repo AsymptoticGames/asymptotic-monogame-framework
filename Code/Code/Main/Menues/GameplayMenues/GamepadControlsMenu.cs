@@ -41,7 +41,7 @@ namespace AsymptoticMonoGameFramework{
         public override void LoadContent() {
             base.LoadContent();
 
-            SpriteFont candara22Font = Globals.content.Load<SpriteFont>("Fonts/candara-bold-22");
+            SpriteFont arial22Font = Globals.content.Load<SpriteFont>("Fonts/arial-bold-22");
             
             foreach (KeyValuePair<string, object> entry in DefaultControls.gamepadControls) {
                 AddButton(new GamepadControlsMenuButton(
@@ -49,7 +49,7 @@ namespace AsymptoticMonoGameFramework{
                         this,
                         buttonSize,
                         entry.Key,
-                        candara22Font,
+                        arial22Font,
                         ControlsConfig.gamepadControls[entry.Key][playerNumber]
                     ));
             }
@@ -59,7 +59,7 @@ namespace AsymptoticMonoGameFramework{
                     this,
                     buttonSize,
                     "Apply to all Gamepads",
-                    candara22Font
+                    arial22Font
                 );
             AddButton(applyToAllGamepadsButton);
 
@@ -68,7 +68,7 @@ namespace AsymptoticMonoGameFramework{
                     this,
                     buttonSize,
                     "Reset to Default",
-                    candara22Font
+                    arial22Font
                 );
             AddButton(resetToDefaultButton);
 
@@ -77,7 +77,7 @@ namespace AsymptoticMonoGameFramework{
                     this,
                     buttonSize,
                     "Back",
-                    candara22Font
+                    arial22Font
                 );
             AddButton(backButton);
         }
