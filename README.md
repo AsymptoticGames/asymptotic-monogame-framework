@@ -6,7 +6,16 @@ This framework is built upon MonoGame 3.5 and is currently supported on Windows.
 
 This is under [CC by 3.0 license](https://creativecommons.org/licenses/by/3.0/). You can use and modify any of this code, even commercially, under the condition that you give Asymptotic Games appropriate credit.
 
+##Installation Instructions
+
+ 1. Download and install Visual Studio 2015 Community Edition from Microsoft Website [here](https://www.microsoft.com/en-us/download/details.aspx?id=48146) ([Direct Download Link](https://www.microsoft.com/en-us/download/confirmation.aspx?id=48146))
+ 2. Download and install MonoGame 3.5 for Visual Studio from MonoGame Website [here](http://www.monogame.net/2016/03/17/monogame-3-5/) ([Direct Download Link](http://www.monogame.net/releases/v3.5.1/MonoGameSetup.exe))
+ 3. Download and unzip this project to the desired location on your computer (You can also pull this repo from GitHub)
+ 4. Open Visual Studio 2015, Click File->Open->Project/Solution, Navigate to the location where you unzipped this project, and open asymptotic-monogame-framework/Windows/AsymptoticMonoGameFramework.sln
+
 ##What it does
+
+![Framework Example](http://asymptoticgames.com/images/framework-example.gif)
 
 ###Splash Screen
 
@@ -21,6 +30,8 @@ Shows company logo screen on game boot up. Can easily be set to any image.
 Opens the Game Settings Menu, where you can select a difficulty for the game.  I just used difficulty as an example.  It's easy to put anything in this screen and have the buttons on this screen affect the variables you will use for gameplay.
   
 #####Settings
+
+![Settings Example](http://asymptoticgames.com/images/settings-example.gif)
 
 ######Graphical Settings
 
@@ -96,7 +107,9 @@ Mac and Linux support might be very close to working right now. I just have no w
 
 ##Games Created with the Asymptotic MonoGame Framework
 
-[Cavern Crumblers](http://www.caverncrumblersgame.com)
+[![Cavern Crumblers Greenlight](http://asymptoticgames.com/images/logo-small.png)](http://www.caverncrumblersgame.com)
+
+[![Cavern Crumblers Greenlight](http://asymptoticgames.com/images/greenlight-widget-image.png)](http://steamcommunity.com/sharedfiles/filedetails/?id=860585134)
 
 ##Contact Links
 
