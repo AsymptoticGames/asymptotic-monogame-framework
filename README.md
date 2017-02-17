@@ -140,3 +140,11 @@ Another way to call this code would be to use the virtual resolution variable if
 ```
 spriteBatch.Draw(background, new Rectangle(0, 0, ResolutionConfig.virtualResolution.Item1, ResolutionConfig.virtualResolution.Item2), Color.White);
 ```
+
+###Animations
+
+See LoadingScreenManager.cs for an example of how animations work.  I think that's the only animation I have in the entire project right now. Sorry for the lack of examples in this department.
+
+An AnimatedEntity can have multiple Animations.  Then call `animatedEntityVariable.PlayAnimation("animationName")` to play the animation that you want.
+
+If an Animation is set to not loop, you can call `animatedEntityVariable.CurrentAnimation.IsComplete` to check if the current animation is complete.
