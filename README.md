@@ -116,6 +116,8 @@ Mac and Linux support might be very close to working right now. I just have no w
 
 ##Contact Links
 
+If you have any questions on how to do anything with the framework, or anything else really, I'd be happy to answer. Just remember I'm not an expert and I'm only one guy doing my best.
+
 Website: [www.asymptoticgames.com](http://www.asymptoticgames.com)
 
 Email: [support@asymptoticgames.com](support@asymptoticgames.com)
