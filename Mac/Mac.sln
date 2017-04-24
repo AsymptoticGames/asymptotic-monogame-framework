@@ -1,0 +1,19 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mac", "Mac\Mac.csproj", "{A0C07126-FD9A-4210-B11B-D56083EC74C0}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Code", "..\Code\Code\Code.shproj", "{7A9B8A55-8FC9-45C2-AFDC-F1446F172330}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A0C07126-FD9A-4210-B11B-D56083EC74C0}.Debug|x86.ActiveCfg = Debug|x86
+		{A0C07126-FD9A-4210-B11B-D56083EC74C0}.Debug|x86.Build.0 = Debug|x86
+		{A0C07126-FD9A-4210-B11B-D56083EC74C0}.Release|x86.ActiveCfg = Release|x86
+		{A0C07126-FD9A-4210-B11B-D56083EC74C0}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+EndGlobal
