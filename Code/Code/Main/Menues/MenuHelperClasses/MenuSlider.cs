@@ -82,7 +82,7 @@ namespace AsymptoticMonoGameFramework {
             base.Draw(spriteBatch);
 
             Rectangle sourceRect = selected ? HandleSelectedSourceRect() : HandleUnselectedSourceRect();
-            Color _color = enabled ? color : CustomColors.darkerGray;
+            Color _color = enabled && selectable ? color : CustomColors.darkerGray;
             spriteBatch.Draw(handleTexture, HandleBoundingRect(), sourceRect, _color, 0, new Vector2(0, 0), SpriteEffects.None, 0);
         }
 

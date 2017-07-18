@@ -18,6 +18,7 @@ namespace AsymptoticMonoGameFramework {
 
         public bool inScrollView;
         public bool selected;
+        public bool selectable;
         public bool enabled;
         public float transparency;
 
@@ -32,6 +33,7 @@ namespace AsymptoticMonoGameFramework {
             color = Color.White;
             inScrollView = true;
             selected = false;
+            selectable = true;
             enabled = true;
             transparency = 1.0f;
         }
@@ -60,7 +62,7 @@ namespace AsymptoticMonoGameFramework {
         
         public virtual void Draw(SpriteBatch spriteBatch) {
             Rectangle sourceRect = selected ? SelectedSourceRect() : UnselectedSourceRect();
-            Color _color = enabled ? color : CustomColors.darkerGray;
+            Color _color = enabled && selectable ? color : CustomColors.darkerGray;
             float _transparency = transparency;
             if(selectionColor > 0) {
                 selectionColor--;

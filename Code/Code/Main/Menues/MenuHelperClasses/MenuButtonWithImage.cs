@@ -25,7 +25,7 @@ namespace AsymptoticMonoGameFramework {
 
         public override void Draw(SpriteBatch spriteBatch) {
             Rectangle sourceRect = selected ? SelectedSourceRect() : UnselectedSourceRect();
-            Color _color = enabled ? color : CustomColors.darkerGray;
+            Color _color = enabled && selectable ? color : CustomColors.darkerGray;
             float _transparency = transparency;
             if (selectionColor > 0) {
                 selectionColor--;
@@ -39,11 +39,12 @@ namespace AsymptoticMonoGameFramework {
             if (buttonTextLabel.text != "") {
                 buttonTextLabel.centerPosition = new Vector2(position.X + sizeOfLabel.X / 2 + widthPadding, position.Y + size.Y / 2);
                 buttonTextLabel.transparency = _transparency;
-                buttonTextLabel.enabled = enabled;
+                buttonTextLabel.enabled = selectable;
                 buttonTextLabel.Draw(spriteBatch);
             }
 
-            spriteBatch.Draw(image, new Rectangle((int)(position.X + size.X - sideImageSize.X - widthPadding), (int)(position.Y + ((size.Y - sideImageSize.Y) / 2)), (int)sideImageSize.X, (int)sideImageSize.Y), _color * _transparency);
+            Color _imageColor = selectable ? color : CustomColors.darkerGray;
+            spriteBatch.Draw(image, new Rectangle((int)(position.X + size.X - sideImageSize.X - widthPadding), (int)(position.Y + ((size.Y - sideImageSize.Y) / 2)), (int)sideImageSize.X, (int)sideImageSize.Y), _imageColor * _transparency);
         }
     }
 }

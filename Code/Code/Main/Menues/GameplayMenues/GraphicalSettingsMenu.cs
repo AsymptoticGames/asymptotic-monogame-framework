@@ -111,16 +111,16 @@ namespace AsymptoticMonoGameFramework {
             if (ResolutionConfig.isFullScreen) {
                 resolutionLabel.text = Resolution.GetMonitorResolution().X + " x " + Resolution.GetMonitorResolution().Y;
                 resolutionLabel.SetColor(CustomColors.darkerGray);
-                resolutionButton.enabled = false;
+                resolutionButton.selectable = false;
                 fullScreenChecked = true;
             } else {
                 resolutionLabel.text = ResolutionConfig.validResolutionOptions[currentResolutionIndex].Item1 + " x " + ResolutionConfig.validResolutionOptions[currentResolutionIndex].Item2;
                 resolutionLabel.SetColor(Color.White);
-                resolutionButton.enabled = true;
+                resolutionButton.selectable = true;
                 fullScreenChecked = false;
             }
             
-            while (!buttonList[currentlySelectedButtonIndex].enabled) {
+            while (!buttonList[currentlySelectedButtonIndex].selectable) {
                 currentlySelectedButtonIndex++;
                 if (currentlySelectedButtonIndex >= buttonList.Count) {
                     currentlySelectedButtonIndex = 0;
@@ -178,11 +178,11 @@ namespace AsymptoticMonoGameFramework {
             if(fullScreenChecked) {
                 resolutionLabel.text = Resolution.GetMonitorResolution().X + " x " + Resolution.GetMonitorResolution().Y;
                 resolutionLabel.SetColor(CustomColors.darkerGray);
-                resolutionButton.enabled = false;
+                resolutionButton.selectable = false;
             } else {
                 resolutionLabel.text = ResolutionConfig.validResolutionOptions[currentResolutionIndex].Item1 + " x " + ResolutionConfig.validResolutionOptions[currentResolutionIndex].Item2;
                 resolutionLabel.SetColor(Color.White);
-                resolutionButton.enabled = true;
+                resolutionButton.selectable = true;
             }
         }
 

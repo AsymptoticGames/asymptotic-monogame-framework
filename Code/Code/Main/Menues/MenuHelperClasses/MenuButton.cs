@@ -40,7 +40,7 @@ namespace AsymptoticMonoGameFramework
         }
 
         public override void Update(GameTime gameTime) {
-            if (selected && menuScreen != null && enabled && inScrollView &&
+            if (selected && menuScreen != null && selectable && enabled && inScrollView &&
                     ((PlayerControls.MouseLeftPressed() && BoundingRect().Contains(PlayerControls.MousePosition())) ||
                     GlobalControls.ConfirmPressed() || PlayerControls.ConfirmPressed(ControlsConfig.keyboardControllerIndex))) {
                 SelectionClicked();
@@ -54,7 +54,7 @@ namespace AsymptoticMonoGameFramework
             if(buttonTextLabel.text != "") {
                 buttonTextLabel.centerPosition = new Vector2(position.X + size.X / 2, position.Y + size.Y / 2);
                 buttonTextLabel.transparency = transparency;
-                buttonTextLabel.enabled = enabled;
+                buttonTextLabel.enabled = selectable;
                 buttonTextLabel.Draw(spriteBatch);
             }
         }

@@ -82,7 +82,7 @@ namespace AsymptoticMonoGameFramework{
                             }
                         }
 
-                        while (!buttonList[currentlySelectedButtonIndex].enabled) {
+                        while (!buttonList[currentlySelectedButtonIndex].selectable) {
                             currentlySelectedButtonIndex++;
                             if (currentlySelectedButtonIndex >= buttonList.Count) {
                                 if (cycleOptions) {
@@ -105,7 +105,7 @@ namespace AsymptoticMonoGameFramework{
                             }
                         }
 
-                        while (!buttonList[currentlySelectedButtonIndex].enabled) {
+                        while (!buttonList[currentlySelectedButtonIndex].selectable) {
                             currentlySelectedButtonIndex--;
                             if (currentlySelectedButtonIndex < 0) {
                                 if (cycleOptions) {
@@ -120,7 +120,7 @@ namespace AsymptoticMonoGameFramework{
 
                     if (PlayerControls.MousePositionMoved()) {
                         for (int i = 0; i < buttonList.Count; i++) {
-                            if (buttonList[i].BoundingRect().Contains(PlayerControls.MousePosition()) && buttonList[i].enabled && buttonList[i].inScrollView) {
+                            if (buttonList[i].BoundingRect().Contains(PlayerControls.MousePosition()) && buttonList[i].selectable && buttonList[i].inScrollView) {
                                 currentlySelectedButtonIndex = i;
                             }
                         }
@@ -178,6 +178,7 @@ namespace AsymptoticMonoGameFramework{
                 } else {
                     button.SetColor(Color.White);
                 }
+                button.selectable = (currentSubMenuScreenIndex == -1);
                 button.Draw(spriteBatch);
             }
             foreach (MenuLabel label in labelList) {
@@ -190,7 +191,7 @@ namespace AsymptoticMonoGameFramework{
         
         private int FirstSelectableButtonIndex() {
             for (int i = 0; i < buttonList.Count; i++) {
-                if (buttonList[i].enabled) {
+                if (buttonList[i].selectable) {
                     return i;
                 }
             }
@@ -199,7 +200,7 @@ namespace AsymptoticMonoGameFramework{
         
         private int LastSelectableButtonIndex() {
             for (int i = buttonList.Count - 1; i >= 0; i++) {
-                if (buttonList[i].enabled) {
+                if (buttonList[i].selectable) {
                     return i;
                 }
             }
