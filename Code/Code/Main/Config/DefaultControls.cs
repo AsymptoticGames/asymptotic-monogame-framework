@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 
-namespace AsymptoticMonoGameFramework {
+namespace AsymptoticMonoGameFramework{
 
     public static class DefaultControls {
+
+        public static string defaultPresetString = "Default";
+        public static string customPresetString = "Custom";
 
         /*******                                                                                                                *******\
                         When changing these controls, you must delete the current settings file on your hard drive.
@@ -35,7 +38,7 @@ namespace AsymptoticMonoGameFramework {
             {pauseTKey, Buttons.Start }
         };
 
-        public static Dictionary<string, object> gamepadControls2 = new Dictionary<string, object> {
+        public static Dictionary<string, object> gamepadControlsPreset2 = new Dictionary<string, object> {
             {moveUpTKey, Buttons.DPadUp },
             {moveDownTKey, Buttons.DPadDown },
             {moveLeftTKey, Buttons.DPadLeft },
@@ -43,13 +46,8 @@ namespace AsymptoticMonoGameFramework {
             {joystickExampleTKey, JoystickOptions.Left },
             {booleanExampleTKey, ToggleOptions.True },
             {confirmTKey, Buttons.A },
-            {declineTKey, Buttons.Back },
+            {declineTKey, Buttons.B },
             {pauseTKey, Buttons.Start }
-        };
-
-        public static Dictionary<string, Dictionary<string, object>> gamepadPresets = new Dictionary<string, Dictionary<string, object>> {
-            { "Gamepad 1", gamepadControls },
-            { "Gamepad 2", gamepadControls2 }
         };
 
         public static Dictionary<string, object> keyboardControls = new Dictionary<string, object> {
@@ -64,7 +62,7 @@ namespace AsymptoticMonoGameFramework {
             {pauseTKey, Keys.Escape }
         };
 
-        public static Dictionary<string, object> keyboardControls2 = new Dictionary<string, object> {
+        public static Dictionary<string, object> keyboardControlsPreset2 = new Dictionary<string, object> {
             {moveUpTKey, Keys.W },
             {moveDownTKey, Keys.S },
             {moveLeftTKey, Keys.A },
@@ -76,10 +74,24 @@ namespace AsymptoticMonoGameFramework {
             {pauseTKey, Keys.Escape }
         };
 
-        public static Dictionary<string, Dictionary<string, object>> keyboardPresets = new Dictionary<string, Dictionary<string, object>> {
-            { "Keyboard 1", keyboardControls },
-            { "Keybaord 2", keyboardControls2 }
-        };
+        public static Dictionary<string, Dictionary<string, object>> gamepadPresets;
+        public static Dictionary<string, Dictionary<string, object>> keyboardPresets;
 
+        public static string currentGamepadPreset = defaultPresetString;
+        public static string currentKeyboardPreset = defaultPresetString;
+
+        public static void SetupPresets() {
+            gamepadPresets = new Dictionary<string, Dictionary<string, object>> {
+                { defaultPresetString, gamepadControls },
+                { "Preset 2", gamepadControlsPreset2 },
+                { "Custom", gamepadControls }
+            };
+
+            keyboardPresets = new Dictionary<string, Dictionary<string, object>> {
+                { defaultPresetString, keyboardControls },
+                { "Preset 2", keyboardControlsPreset2 },
+                { "Custom", keyboardControls }
+            };
+        }
     }
 }

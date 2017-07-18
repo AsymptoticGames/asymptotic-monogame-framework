@@ -56,14 +56,9 @@ namespace AsymptoticMonoGameFramework {
                     new Vector2(),
                     this,
                     buttonSize,
-<<<<<<< HEAD
                     DefaultControls.keyboardPresets.Keys.ToArray(),
                     0,
-                    candara22Font
-=======
-                    "Reset to Default",
                     arial22Font
->>>>>>> master
                 );
                 AddButton(choosePresetButton);
             }
