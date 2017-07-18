@@ -88,7 +88,7 @@ namespace AsymptoticMonoGameFramework{
                                 if (cycleOptions) {
                                     currentlySelectedButtonIndex = 0;
                                 } else {
-                                    currentlySelectedButtonIndex = buttonList.Count - 1;
+                                    currentlySelectedButtonIndex = LastSelectableButtonIndex();
                                 }
                             }
                         }
@@ -111,7 +111,7 @@ namespace AsymptoticMonoGameFramework{
                                 if (cycleOptions) {
                                     currentlySelectedButtonIndex = buttonList.Count - 1;
                                 } else {
-                                    currentlySelectedButtonIndex = 0;
+                                    currentlySelectedButtonIndex = FirstSelectableButtonIndex();
                                 }
                             }
                         }
@@ -186,6 +186,24 @@ namespace AsymptoticMonoGameFramework{
             if (currentSubMenuScreenIndex >= 0) {
                 subMenues[currentSubMenuScreenIndex].Draw(spriteBatch);
             }
+        }
+        
+        private int FirstSelectableButtonIndex() {
+            for (int i = 0; i < buttonList.Count; i++) {
+                if (buttonList[i].enabled) {
+                    return i;
+                }
+            }
+            return 0;
+        }
+        
+        private int LastSelectableButtonIndex() {
+            for (int i = buttonList.Count - 1; i >= 0; i++) {
+                if (buttonList[i].enabled) {
+                    return i;
+                }
+            }
+            return 0;
         }
     }
 }

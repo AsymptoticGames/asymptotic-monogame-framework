@@ -22,7 +22,7 @@ namespace AsymptoticMonoGameFramework
             //OutputFullFilePathOfSettingsFile();
 
             /*** Uncomment if changing controls in DefaultControls.cs or ControlsConfig.numGamepads ***/
-            DeleteSettingsFile();
+            //DeleteSettingsFile();
         }
 
         public void Load() {
