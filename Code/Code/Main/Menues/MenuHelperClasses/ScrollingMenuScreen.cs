@@ -19,6 +19,12 @@ namespace AsymptoticMonoGameFramework{
         protected int menuPadding;
         protected Vector2 buttonSize;
         protected int buttonPadding;
+        protected Vector2 titleSize;
+        protected string titleString;
+
+        private SpriteFont titleFont;
+
+        private MenuLabel titleLabel;
 
         private int selectionArrowColor = 0;
 
@@ -37,18 +43,31 @@ namespace AsymptoticMonoGameFramework{
             buttonSize = MenuButton.buttonSize;
             buttonPadding = 10;
             cycleOptions = false;
+            titleSize = new Vector2(1280, 0);
+            titleString = "";
         }
 
         public override void LoadContent() {
             menuBackground = Globals.content.Load<Texture2D>("Menues/PauseMenu/pause-menu-background");
             downArrow = Globals.content.Load<Texture2D>("Menues/MenuHelpers/scroll-menu-arrow");
             upArrow = Globals.content.Load<Texture2D>("Menues/MenuHelpers/scroll-menu-arrow");
+            titleFont = Globals.content.Load<SpriteFont>("Fonts/arial-bold-40");
+
+            titleLabel = new MenuLabel(titleFont,
+                                        new Vector2(Resolution.getVirtualResolution().X / 2, (Resolution.getVirtualResolution().Y - menuSize.Y + titleSize.Y + menuPadding) / 2),
+                                        titleString,
+                                        Color.White);
         }
 
         public override void UnloadContent() {
 
         }
         
+        protected void UpdateTitleLabel(string newTitle) {
+            titleString = newTitle;
+            titleLabel.text = titleString;
+        }
+
         protected virtual void AddButton(MenuButton button) {
             buttonList.Add(button);
             button.position = new Vector2(ResolutionConfig.virtualResolution.Item1 / 2 - buttonSize.X / 2, ContentRect().Y + buttonPadding + (buttonSize.Y + buttonPadding * 2) * (buttonList.Count - 1));
@@ -102,20 +121,24 @@ namespace AsymptoticMonoGameFramework{
             }
         }
 
+        protected Vector2 SizeOfTitleString() {
+            return HelperFunctions.SizeOfString(titleFont, titleString);
+        }
+
         protected Rectangle ContentRect() {
-            return new Rectangle((int)(ResolutionConfig.virtualResolution.Item1 / 2 - menuSize.X / 2), (int)(ResolutionConfig.virtualResolution.Item2 / 2 - menuSize.Y / 2 + menuPadding), (int)menuSize.X, (int)menuSize.Y - menuPadding * 2);
+            return new Rectangle((int)(ResolutionConfig.virtualResolution.Item1 / 2 - menuSize.X / 2), (int)(ResolutionConfig.virtualResolution.Item2 / 2 - menuSize.Y / 2 + menuPadding + titleSize.Y), (int)menuSize.X, (int)menuSize.Y - menuPadding * 2 - (int)titleSize.Y);
         }
 
         protected Rectangle BoundingRect() {
             return new Rectangle((int)(ResolutionConfig.virtualResolution.Item1 / 2 - menuSize.X / 2), (int)(ResolutionConfig.virtualResolution.Item2 / 2 - menuSize.Y / 2), (int)menuSize.X, (int)menuSize.Y);
         }
-        
+
         private Rectangle UpArrowBoundingRect() {
-            return new Rectangle((int)ResolutionConfig.virtualResolution.Item1 / 2 - 20, BoundingRect().Y + 25, 40, 25);
+            return new Rectangle((int)ResolutionConfig.virtualResolution.Item1 / 2 - 20, BoundingRect().Y + (int)titleSize.Y + 27, 40, 25);
         }
 
         private Rectangle DownArrowBoundingRect() {
-            return new Rectangle((int)ResolutionConfig.virtualResolution.Item1 / 2 - 20, BoundingRect().Y + BoundingRect().Size.Y - 50, 40, 25);
+            return new Rectangle((int)ResolutionConfig.virtualResolution.Item1 / 2 - 20, BoundingRect().Y + BoundingRect().Size.Y - 52, 40, 25);
         }
 
         public override void Draw(SpriteBatch spriteBatch) {
@@ -160,6 +183,7 @@ namespace AsymptoticMonoGameFramework{
                     label.Draw(spriteBatch);
                 }
             }
+            titleLabel.Draw(spriteBatch);
             if (currentSubMenuScreenIndex >= 0) {
                 subMenues[currentSubMenuScreenIndex].Draw(spriteBatch);
             }

@@ -10,14 +10,17 @@ namespace AsymptoticMonoGameFramework{
     public class GamepadControlsMenu : ScrollingMenuScreen {
 
         private int playerNumber;
-
-        private MenuButtonSideScroll choosePresetButton;
+        
         private MenuButton applyToAllGamepadsButton;
         private MenuButton backButton;
+
+        private Texture2D leftArrow;
+        private Texture2D rightArrow;
 
         private bool waitingForAllKeysToBeUnpressed = false; //must unpress all keys after clicking a button so the control isn't immediately assigned to that button
         private bool waitingForKeyPress = false;
         private int buttonIndexPressed = -1;
+        private int selectionArrowColor = 0;
 
         public GamepadControlsMenu(int _playerNumber) {
             playerNumber = _playerNumber;
@@ -32,16 +35,23 @@ namespace AsymptoticMonoGameFramework{
         private void Setup() {
             buttonSize = MenuButton.buttonSize + new Vector2(0, 12);
             buttonPadding = 4;
+            menuSize = new Vector2(1450, 816);
+            titleSize = new Vector2(1280, 96);
+            titleString = DefaultControls.currentGamepadPreset;
         }
 
         public override void MenuScreenOpened() {
             base.MenuScreenOpened();
             UpdateAllButtonImages();
-            UpdateButtonsEnabled();
+            UpdateTitleLabel(DefaultControls.currentGamepadPreset);
+            //if custom, enable editing
         }
 
         public override void LoadContent() {
             base.LoadContent();
+
+            leftArrow = Globals.content.Load<Texture2D>("Menues/MenuHelpers/menu-button-side-scroll-arrow");
+            rightArrow = Globals.content.Load<Texture2D>("Menues/MenuHelpers/menu-button-side-scroll-arrow");
             
             SpriteFont arial22Font = Globals.content.Load<SpriteFont>("Fonts/arial-bold-22");
             
@@ -64,18 +74,6 @@ namespace AsymptoticMonoGameFramework{
                     arial22Font
                 );
             AddButton(applyToAllGamepadsButton);
-            
-            if (DefaultControls.gamepadPresets.Count > 1) {
-                choosePresetButton = new MenuButtonSideScroll(
-                    new Vector2(),
-                    this,
-                    buttonSize,
-                    DefaultControls.gamepadPresets.Keys.ToArray(),
-                    0,
-                    arial22Font
-                );
-                AddButton(choosePresetButton);
-            }
 
             backButton = new MenuButton(
                     new Vector2(),
@@ -104,9 +102,28 @@ namespace AsymptoticMonoGameFramework{
             }
         }
 
+        private void UpdateNewControlsPreset() {
+            UpdateTitleLabel(DefaultControls.currentGamepadPreset);
+            ControlsConfig.ApplyPresetToGamepad(playerNumber, DefaultControls.currentGamepadPreset);
+            UpdateAllButtonImages();
+        }
+
         public override void Update(GameTime gameTime) {
             if (!waitingForKeyPress) {
                 base.Update(gameTime);
+                if (GlobalControls.MenuLeftPressed() ||
+                        (PlayerControls.MouseLeftPressed() && LeftArrowBoundingRect().Contains(PlayerControls.MousePosition()))) {
+                    selectionArrowColor = -3;
+                    //increment current preset controls
+                    //if custom, enable editing
+                    UpdateNewControlsPreset();
+                } else if (GlobalControls.MenuRightPressed() ||
+                        (PlayerControls.MouseLeftPressed() && RightArrowBoundingRect().Contains(PlayerControls.MousePosition()))) {
+                    selectionArrowColor = 3;
+                    //increment current preset controls
+                    //if custom, enable editing
+                    UpdateNewControlsPreset();
+                }
             } else {
                 if (!waitingForAllKeysToBeUnpressed) {
                     if (GamepadInputPressed()) {
@@ -116,15 +133,6 @@ namespace AsymptoticMonoGameFramework{
                 } else if (!GamepadInputPressed()) {
                     waitingForAllKeysToBeUnpressed = false;
                 }
-            }
-        }
-
-        public override void ButtonSideScrollScrolled(MenuButtonSideScroll button, int direction) {
-            base.ButtonSideScrollScrolled(button, direction);
-            if (button == choosePresetButton) {
-                ControlsConfig.ApplyPresetToGamepad(playerNumber, button.GetSelectedValue());
-                UpdateAllButtonImages();
-                UpdateButtonsEnabled();
             }
         }
 
@@ -191,14 +199,6 @@ namespace AsymptoticMonoGameFramework{
             ((ControlsMenu)parentMenu).UpdateAllControlsButtonImages();
         }
 
-        private void UpdateButtonsEnabled() {
-            if (choosePresetButton.GetSelectedValue() == DefaultControls.customPresetString) {
-                SetAllButtonsEnabled(true);
-            } else {
-                SetAllButtonsEnabled(false);
-            }
-        }
-
         private void SetAllButtonsEnabled(bool value) {
             foreach(MenuSelection button in buttonList) {
                 if (button is GamepadControlsMenuButton) {
@@ -219,8 +219,29 @@ namespace AsymptoticMonoGameFramework{
             return waitingForKeyPress;
         }
 
+        private Rectangle LeftArrowBoundingRect() {
+            return new Rectangle((int)ResolutionConfig.virtualResolution.Item1 / 2 - (int)SizeOfTitleString().X / 2 - 72, BoundingRect().Y + (int)(titleSize.Y / 2) + menuPadding / 2 - 16, 32, 32);
+        }
+
+        private Rectangle RightArrowBoundingRect() {
+            return new Rectangle((int)ResolutionConfig.virtualResolution.Item1 / 2 + (int)SizeOfTitleString().X / 2 + 40, BoundingRect().Y + (int)(titleSize.Y / 2) + menuPadding / 2 - 16, 32, 32);
+        }
+
         public override void Draw(SpriteBatch spriteBatch) {
             base.Draw(spriteBatch);
+            if (selectionArrowColor < 0) {
+                spriteBatch.Draw(leftArrow, LeftArrowBoundingRect(), Color.White * 0.3f);
+                selectionArrowColor++;
+            } else {
+                spriteBatch.Draw(leftArrow, LeftArrowBoundingRect(), currentSubMenuScreenIndex >= 0 ? CustomColors.darkerGray : Color.White);
+            }
+
+            if (selectionArrowColor > 0) {
+                spriteBatch.Draw(rightArrow, RightArrowBoundingRect(), null, Color.White * 0.3f, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
+                selectionArrowColor--;
+            } else {
+                spriteBatch.Draw(rightArrow, RightArrowBoundingRect(), null, currentSubMenuScreenIndex >= 0 ? CustomColors.darkerGray : Color.White, 0, Vector2.Zero, SpriteEffects.FlipHorizontally, 0);
+            }
         }
     }
 }
