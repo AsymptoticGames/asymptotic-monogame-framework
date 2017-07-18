@@ -178,7 +178,6 @@ namespace AsymptoticMonoGameFramework{
                 } else {
                     button.SetColor(Color.White);
                 }
-                button.selectable = (currentSubMenuScreenIndex == -1);
                 button.Draw(spriteBatch);
             }
             foreach (MenuLabel label in labelList) {
