@@ -12,7 +12,7 @@ namespace AsymptoticMonoGameFramework
         public MenuButton(Vector2 _position, MenuScreen _menuScreen, Vector2 _size, string _buttonText) : base(_position, _menuScreen, _size, buttonSize) {
             texture = Globals.content.Load<Texture2D>("Menues/MenuHelpers/menu-button-blank");
             buttonTextLabel = new MenuLabel(
-                         Globals.content.Load<SpriteFont>("Fonts/candara-bold-28"),
+                         Globals.content.Load<SpriteFont>("Fonts/arial-bold-28"),
                          new Vector2(_position.X + _size.X / 2, _position.Y + _size.Y / 2),
                          _buttonText,
                          CustomColors.veryLightOrange
@@ -32,7 +32,7 @@ namespace AsymptoticMonoGameFramework
         public MenuButton(Vector2 _position, MenuScreen _menuScreen, Vector2 _size, string _buttonText, Texture2D _texture) : base(_position, _menuScreen, _size, buttonSize) {
             texture = _texture;
             buttonTextLabel = new MenuLabel(
-                         Globals.content.Load<SpriteFont>("Fonts/candara-bold-28"),
+                         Globals.content.Load<SpriteFont>("Fonts/arial-bold-28"),
                          new Vector2(_position.X + _size.X / 2, _position.Y + _size.Y / 2),
                          _buttonText,
                          CustomColors.veryLightOrange

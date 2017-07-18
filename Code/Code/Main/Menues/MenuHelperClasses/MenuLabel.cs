@@ -78,11 +78,11 @@ namespace AsymptoticMonoGameFramework {
 
         public Vector2 FontOrigin() {
             if (textAlignment == TextAlignment.Right) {
-                return new Vector2(SizeOfString().X, SizeOfString().Y / 2- 10);
+                return new Vector2(SizeOfString().X, SizeOfString().Y / 2);
             } else if (textAlignment == TextAlignment.Left) {
-                return new Vector2(0, SizeOfString().Y /2 - 10);
+                return new Vector2(0, SizeOfString().Y /2);
             } else {
-                return new Vector2(SizeOfString().X / 2, SizeOfString().Y / 2 - 10);
+                return new Vector2(SizeOfString().X / 2, SizeOfString().Y / 2);
             }
         }
 

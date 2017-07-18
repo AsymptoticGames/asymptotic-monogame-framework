@@ -13,35 +13,23 @@
 
 #---------------------------------- Content ---------------------------------#
 
-#begin Fonts\candara-40.spritefont
+#begin Fonts\arial-40.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:TextureFormat=Compressed
-/build:Fonts\candara-40.spritefont
+/build:Fonts\arial-40.spritefont
 
-#begin Fonts/candara-bold-40.spritefont
+#begin Fonts\arial-bold-28.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:TextureFormat=Compressed
-/build:Fonts/candara-bold-40.spritefont
+/build:Fonts\arial-bold-28.spritefont
 
-#begin Fonts\candara-bold-28.spritefont
+#begin Fonts\arial-bold-22.spritefont
 /importer:FontDescriptionImporter
 /processor:FontDescriptionProcessor
 /processorParam:TextureFormat=Compressed
-/build:Fonts\candara-bold-28.spritefont
-
-#begin Fonts\candara-bold-52.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
-/build:Fonts\candara-bold-52.spritefont
-
-#begin Fonts\candara-bold-22.spritefont
-/importer:FontDescriptionImporter
-/processor:FontDescriptionProcessor
-/processorParam:TextureFormat=Compressed
-/build:Fonts\candara-bold-22.spritefont
+/build:Fonts\arial-bold-22.spritefont
 
 #begin Audio/Songs/Back Into the Fray.mp3
 /importer:Mp3Importer
@@ -1950,4 +1938,16 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Menues/MenuHelpers/scroll-menu-arrow.png
+
+#begin Fonts/arial-bold-40.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/arial-bold-40.spritefont
+
+#begin Fonts/arial-bold-52.spritefont
+/importer:FontDescriptionImporter
+/processor:FontDescriptionProcessor
+/processorParam:TextureFormat=Compressed
+/build:Fonts/arial-bold-52.spritefont
 

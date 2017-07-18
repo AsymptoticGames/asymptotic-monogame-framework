@@ -49,7 +49,7 @@ namespace AsymptoticMonoGameFramework {
             Vector2 buttonSize = new Vector2(400, 80);
 
             resolutionLabel = new MenuLabel(
-                    Globals.content.Load<SpriteFont>("Fonts/candara-bold-40"),
+                    Globals.content.Load<SpriteFont>("Fonts/arial-bold-40"),
                     new Vector2(ResolutionConfig.virtualResolution.Item1 / 2, 540),
                     ResolutionConfig.GetCurrentResolution().Item1 + " x " + ResolutionConfig.GetCurrentResolution().Item2,
                     Color.White

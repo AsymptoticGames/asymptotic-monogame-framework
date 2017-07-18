@@ -44,14 +44,14 @@ namespace AsymptoticMonoGameFramework {
             Vector2 buttonSize = new Vector2(400, 80);
 
             musicVolumeLabel = new MenuLabel(
-                    Globals.content.Load<SpriteFont>("Fonts/candara-bold-28"),
+                    Globals.content.Load<SpriteFont>("Fonts/arial-bold-28"),
                     new Vector2(ResolutionConfig.virtualResolution.Item1 / 2, 420),
                     MusicVolumeLabelText(),
                     CustomColors.veryLightOrange
                 );
 
             soundEffectsVolumeLabel = new MenuLabel(
-                    Globals.content.Load<SpriteFont>("Fonts/candara-bold-28"),
+                    Globals.content.Load<SpriteFont>("Fonts/arial-bold-28"),
                     new Vector2(ResolutionConfig.virtualResolution.Item1 / 2, 550),
                     SoundEffectVolumeLabelText(),
                     CustomColors.veryLightOrange
