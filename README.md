@@ -118,9 +118,7 @@ Mac and Linux support might be very close to working right now. I just have no w
 
 ## Games Created with the Asymptotic MonoGame Framework
 
-[![Cavern Crumblers Greenlight](http://asymptoticgames.com/images/logo-small.png)](http://www.caverncrumblersgame.com)
-
-[![Cavern Crumblers Greenlight](http://asymptoticgames.com/images/greenlight-widget-image.png)](http://steamcommunity.com/sharedfiles/filedetails/?id=860585134)
+[![Cavern Crumblers](http://asymptoticgames.com/images/logo-small.png)](http://www.caverncrumblersgame.com)
 
 ## Contact Links
 
