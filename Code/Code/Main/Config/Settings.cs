@@ -17,7 +17,9 @@ namespace AsymptoticMonoGameFramework
 
         /** Controls Settings **/
         public int[][] gamepadControlsTValues = new int[DefaultControls.gamepadControls.Count][];
+        public string[] currentGamepadPreset = new string[ControlsConfig.numGamepads];
         public int[][] keyboardControlsTValues = new int[DefaultControls.keyboardControls.Count][];
+        public string[] currentKeyboardPreset = new string[1];
 
         public Settings() {
             int controlsIndex = 0;
