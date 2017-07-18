@@ -37,14 +37,14 @@ namespace AsymptoticMonoGameFramework{
             buttonPadding = 4;
             menuSize = new Vector2(1450, 816);
             titleSize = new Vector2(1280, 96);
-            titleString = DefaultControls.currentGamepadPreset;
+            titleString = DefaultControls.currentGamepadPreset[playerNumber];
         }
 
         public override void MenuScreenOpened() {
             base.MenuScreenOpened();
             UpdateAllButtonImages();
-            UpdateTitleLabel(DefaultControls.currentGamepadPreset);
-            //if custom, enable editing
+            UpdateTitleLabel(DefaultControls.currentGamepadPreset[playerNumber]);
+            CheckToEnableButtons();
         }
 
         public override void LoadContent() {
@@ -103,8 +103,8 @@ namespace AsymptoticMonoGameFramework{
         }
 
         private void UpdateNewControlsPreset() {
-            UpdateTitleLabel(DefaultControls.currentGamepadPreset);
-            ControlsConfig.ApplyPresetToGamepad(playerNumber, DefaultControls.currentGamepadPreset);
+            UpdateTitleLabel(DefaultControls.currentGamepadPreset[playerNumber]);
+            ControlsConfig.ApplyPresetToGamepad(playerNumber, DefaultControls.currentGamepadPreset[playerNumber]);
             UpdateAllButtonImages();
         }
 
@@ -114,14 +114,14 @@ namespace AsymptoticMonoGameFramework{
                 if (GlobalControls.MenuLeftPressed() ||
                         (PlayerControls.MouseLeftPressed() && LeftArrowBoundingRect().Contains(PlayerControls.MousePosition()))) {
                     selectionArrowColor = -3;
-                    //increment current preset controls
-                    //if custom, enable editing
+                    DefaultControls.DecrementGamepadPreset(playerNumber);
+                    CheckToEnableButtons();
                     UpdateNewControlsPreset();
                 } else if (GlobalControls.MenuRightPressed() ||
                         (PlayerControls.MouseLeftPressed() && RightArrowBoundingRect().Contains(PlayerControls.MousePosition()))) {
                     selectionArrowColor = 3;
-                    //increment current preset controls
-                    //if custom, enable editing
+                    DefaultControls.IncrementGamepadPreset(playerNumber);
+                    CheckToEnableButtons();
                     UpdateNewControlsPreset();
                 }
             } else {
@@ -197,6 +197,10 @@ namespace AsymptoticMonoGameFramework{
         private void ApplyToAllGamepadsPressed() {
             ControlsConfig.ApplyControlsToAllGamepads(playerNumber);
             ((ControlsMenu)parentMenu).UpdateAllControlsButtonImages();
+        }
+
+        private void CheckToEnableButtons() {
+            SetAllButtonsEnabled(DefaultControls.GamepadPresetIsCustom(playerNumber));
         }
 
         private void SetAllButtonsEnabled(bool value) {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework.Input;
 
@@ -77,21 +78,47 @@ namespace AsymptoticMonoGameFramework{
         public static Dictionary<string, Dictionary<string, object>> gamepadPresets;
         public static Dictionary<string, Dictionary<string, object>> keyboardPresets;
 
-        public static string currentGamepadPreset = defaultPresetString;
-        public static string currentKeyboardPreset = defaultPresetString;
+        public static string[] currentGamepadPreset = new string[ControlsConfig.numGamepads];
+        public static string[] currentKeyboardPreset = new string[1];
 
         public static void SetupPresets() {
             gamepadPresets = new Dictionary<string, Dictionary<string, object>> {
                 { defaultPresetString, gamepadControls },
                 { "Preset 2", gamepadControlsPreset2 },
-                { "Custom", gamepadControls }
+                { customPresetString, gamepadControls }
             };
+            for (int i = 0; i < ControlsConfig.numGamepads; i++) {
+                currentGamepadPreset[i] = defaultPresetString;
+            }
 
             keyboardPresets = new Dictionary<string, Dictionary<string, object>> {
                 { defaultPresetString, keyboardControls },
                 { "Preset 2", keyboardControlsPreset2 },
-                { "Custom", keyboardControls }
+                { customPresetString, keyboardControls }
             };
+            currentGamepadPreset[0] = defaultPresetString;
+        }
+
+        public static bool GamepadPresetIsCustom(int playerNumber) {
+            return currentGamepadPreset[playerNumber] == customPresetString;
+        }
+
+        public static void IncrementGamepadPreset(int playerNumber) {
+            int currentIndex = gamepadPresets.Keys.ToList().IndexOf(currentGamepadPreset[playerNumber]);
+            currentIndex++;
+            if (currentIndex >= gamepadPresets.Keys.ToList().Count) {
+                currentIndex = 0;
+            }
+            currentGamepadPreset[playerNumber] = gamepadPresets.Keys.ToList()[currentIndex];
+        }
+
+        public static void DecrementGamepadPreset(int playerNumber) {
+            int currentIndex = gamepadPresets.Keys.ToList().IndexOf(currentGamepadPreset[playerNumber]);
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = gamepadPresets.Keys.ToList().Count - 1;
+            }
+            currentGamepadPreset[playerNumber] = gamepadPresets.Keys.ToList()[currentIndex];
         }
     }
 }
