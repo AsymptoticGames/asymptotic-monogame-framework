@@ -7,6 +7,8 @@ namespace AsymptoticMonoGameFramework
 {
     public class Settings {
 
+        //public int/string <variable_name> = <default_value>
+
         /** Graphical Settings **/
         public string fullScreen = "false";
         public string resolution = "";
@@ -43,6 +45,11 @@ namespace AsymptoticMonoGameFramework
                 keyboardControlsTValues[controlsIndex] = playerControlsTValues;
                 controlsIndex++;
             }
+
+            for (int i = 0; i < currentGamepadPreset.Length; i++) {
+                currentGamepadPreset[i] = DefaultControls.defaultPresetString;
+            }
+            currentKeyboardPreset[0] = DefaultControls.defaultPresetString;
         }
     }
 
