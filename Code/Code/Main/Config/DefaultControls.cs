@@ -96,11 +96,15 @@ namespace AsymptoticMonoGameFramework{
                 { "Preset 2", keyboardControlsPreset2 },
                 { customPresetString, keyboardControls }
             };
-            currentGamepadPreset[0] = defaultPresetString;
+            currentKeyboardPreset[0] = defaultPresetString;
         }
 
         public static bool GamepadPresetIsCustom(int playerNumber) {
             return currentGamepadPreset[playerNumber] == customPresetString;
+        }
+
+        public static bool KeyboardPresetIsCustom() {
+            return currentKeyboardPreset[0] == customPresetString;
         }
 
         public static void IncrementGamepadPreset(int playerNumber) {
@@ -119,6 +123,24 @@ namespace AsymptoticMonoGameFramework{
                 currentIndex = gamepadPresets.Keys.ToList().Count - 1;
             }
             currentGamepadPreset[playerNumber] = gamepadPresets.Keys.ToList()[currentIndex];
+        }
+
+        public static void IncrementKeyboardPreset() {
+            int currentIndex = keyboardPresets.Keys.ToList().IndexOf(currentKeyboardPreset[0]);
+            currentIndex++;
+            if (currentIndex >= keyboardPresets.Keys.ToList().Count) {
+                currentIndex = 0;
+            }
+            currentKeyboardPreset[0] = keyboardPresets.Keys.ToList()[currentIndex];
+        }
+
+        public static void DecrementKeyboardPreset() {
+            int currentIndex = keyboardPresets.Keys.ToList().IndexOf(currentKeyboardPreset[0]);
+            currentIndex--;
+            if (currentIndex < 0) {
+                currentIndex = keyboardPresets.Keys.ToList().Count - 1;
+            }
+            currentKeyboardPreset[0] = keyboardPresets.Keys.ToList()[currentIndex];
         }
     }
 }
