@@ -148,7 +148,7 @@ namespace AsymptoticMonoGameFramework {
                 keyboardControls[entry.Key][0] = Globals.gameInstance.settingsManager.settings.keyboardControlsTValues[controlsIndex][0];
                 controlsIndex++;
             }
-            DefaultControls.currentGamepadPreset[0] = Globals.gameInstance.settingsManager.settings.currentKeyboardPreset[0];
+            DefaultControls.currentKeyboardPreset[0] = Globals.gameInstance.settingsManager.settings.currentKeyboardPreset[0];
         }
 
         public static void SaveControlsSettings() {
@@ -176,7 +176,7 @@ namespace AsymptoticMonoGameFramework {
                 Globals.gameInstance.settingsManager.settings.keyboardControlsTValues[controlsIndex][0] = keyboardControls[entry.Key][0];
                 controlsIndex++;
             }
-            Globals.gameInstance.settingsManager.settings.currentKeyboardPreset[0] = DefaultControls.currentGamepadPreset[0];
+            Globals.gameInstance.settingsManager.settings.currentKeyboardPreset[0] = DefaultControls.currentKeyboardPreset[0];
         }
     }
 }
