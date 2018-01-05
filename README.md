@@ -160,19 +160,20 @@ If an Animation is set to not loop, you can call `animatedEntityVariable.Current
 In Visual Studio
 
  - SettingsManager.cs
-  - Change folderName variable from "AsymptoticMonoGameFramework" to "GameName"
-  - Change fileName variable from "asymptotic-monogame-framework-settings.dat" to "game-name-settings.dat"
+   - Change folderName variable from "AsymptoticMonoGameFramework" to "GameName"
+   - Change fileName variable from "asymptotic-monogame-framework-settings.dat" to "game-name-settings.dat"
  - Right-click Solution 'AsymptoticMonoGameFramework' -> Rename -> "GameName"
  - Right-click AsymptoticMonoGameFramework project -> Rename -> "GameName"
  - Right-click GameName project (same as previous point, but now renamed) -> Properties -> Application
-  - Assembly name -> "GameName"
-  - Default namespace -> "GameName"
-  - Click Assembly Information
-   - Change all values here to whatever you want them to be
-  - In Publish tab, you can change the publishing folder location if you'd like
+   - Assembly name -> "GameName"
+   - Default namespace -> "GameName"
+   - Click Assembly Information
+     - Change all values here to whatever you want them to be
+   - You can also change the icon for the game here by uploading a new icon.ico image
+   - In Publish tab, you can change the publishing folder location if you'd like
  - Edit -> Find and Replace -> Find in Files -> Replace in Files tab
-  - Find what: "namespace AsymptoticMonoGameFramework"
-  - Replace with: "namespace GameName"
+   - Find what: "namespace AsymptoticMonoGameFramework"
+   - Replace with: "namespace GameName"
   
 ## Possible Errors
 
