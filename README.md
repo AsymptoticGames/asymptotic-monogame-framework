@@ -152,3 +152,9 @@ See LoadingScreenManager.cs for an example of how animations work.  I think that
 An AnimatedEntity can have multiple Animations.  Then call `animatedEntityVariable.PlayAnimation("animationName")` to play the animation that you want.
 
 If an Animation is set to not loop, you can call `animatedEntityVariable.CurrentAnimation.IsComplete` to check if the current animation is complete.
+
+## Changing the Name of your Game
+
+## Possible Errors
+
+"An error occurred while signing": Right-click on the project in Visual Studio -> Properties -> Signing -> Create Test Certificate -> Ok (No password is required)
