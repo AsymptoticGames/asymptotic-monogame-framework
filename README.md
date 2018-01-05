@@ -155,8 +155,6 @@ If an Animation is set to not loop, you can call `animatedEntityVariable.Current
 
 ## Changing the Name of your Game
 
- - Change folder name from asymptotic-monogame-framework to game-name
-
 In Visual Studio
 
  - SettingsManager.cs
@@ -164,7 +162,7 @@ In Visual Studio
    - Change fileName variable from "asymptotic-monogame-framework-settings.dat" to "game-name-settings.dat"
  - Right-click Solution 'AsymptoticMonoGameFramework' -> Rename -> "GameName"
  - Right-click AsymptoticMonoGameFramework project -> Rename -> "GameName"
- - Right-click GameName project (same as previous point, but now renamed) -> Properties -> Application
+ - Right-click GameName project (same as previous step, but now renamed) -> Properties -> Application
    - Assembly name -> "GameName"
    - Default namespace -> "GameName"
    - Click Assembly Information
@@ -175,6 +173,22 @@ In Visual Studio
    - Find what: "namespace AsymptoticMonoGameFramework"
    - Replace with: "namespace GameName"
   
+Close Visual Studio
+  
+In File Explorer (after doing all steps in Visual Studio)
+
+ - Change folder name from asymptotic-monogame-framework to game-name
+ - Change folder name in game-name/Windows from AsymptoticMonoGameFramework to GameName
+ - In game-name/Windows/GameName
+   - You can delete the obj folder completely to clean up old build files
+   - You can delete the bin folder completely to clean up old build files
+   - If there is a AsymptoticMonoGameFramework_TemporaryKey, you can delete that as well
+   
+Open up Visual Studio again, and open GameName.sln
+
+ - Right-click GameName project and remove
+ - Right-click Solution 'GameName' -> Add -> Existing Project -> game-name/Windows/GameName/GameName.csproj -> Open
+   
 ## Possible Errors
 
 "An error occurred while signing": Right-click on the project in Visual Studio -> Properties -> Signing -> Create Test Certificate -> Ok (No password is required)
