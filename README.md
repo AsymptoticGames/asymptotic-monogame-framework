@@ -12,14 +12,10 @@ If you do use this framework, I'd love to see what you create with it. Just let 
 
 ### Windows
 
- 1. Download and install Visual Studio 2015 Community Edition from Microsoft Website [here](https://www.microsoft.com/en-us/download/details.aspx?id=48146) ([Direct Download Link](https://www.microsoft.com/en-us/download/confirmation.aspx?id=48146))
+ 1. Download and install Visual Studio 2015 Community Edition from Microsoft Website [here](https://www.microsoft.com/en-us/download/details.aspx?id=48146) ([Direct Download Link](https://go.microsoft.com/fwlink/?LinkId=532606&clcid=0x409))
  2. Download and install MonoGame 3.6 for Visual Studio from MonoGame Website [here](http://www.monogame.net/2017/03/01/monogame-3-6/) ([Direct Download Link](http://www.monogame.net/releases/v3.6/MonoGameSetup.exe))
  3. Download and unzip this project to the desired location on your computer (You can also pull this repo from GitHub)
  4. Open Visual Studio 2015, Click File->Open->Project/Solution, Navigate to the location where you unzipped this project, and open asymptotic-monogame-framework/Windows/AsymptoticMonoGameFramework.sln
- 
- ### Mac OS Sierra
- 
-  //TODO
 
 ## What it does
 
